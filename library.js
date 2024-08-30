@@ -61,6 +61,15 @@ function displayLibrary(){
         }
         card.appendChild(readStatus);
 
+        const toggleReadButton = document.createElement('button');
+        toggleReadButton.textContent = book.isRead ? 'Mark as unread' : 'Mark as read';
+        toggleReadButton.classList.add('toggle-read-button');
+        toggleReadButton.addEventListener('click', () => {
+            book.isRead = !book.isRead;
+            displayLibrary();
+        });
+        card.appendChild(toggleReadButton);
+
 
         libraryDiv.appendChild(card);
     });
