@@ -5,9 +5,41 @@ body{
     padding: 0;
 }
 
+h1 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
 #library{
     display: flex;
     flex-wrap: wrap;
     gap: 20px;
     justify-content: center;
+}
+
+.card {
+    background-color: white;
+    padding: 15px;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    width: 200px;
+}
+
+.card h2 {
+    font-size: 1.2em;
+    margin: 0;
+}
+
+.card p {
+    margin: 5px 0;
+}
+
+.card .read-status {
+    margin-top: 10px;
+    font-weight: bold;
+    color: green;
+}
+
+.card .read-status.unread {
+    color: red;
 }
