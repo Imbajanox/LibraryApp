@@ -16,6 +16,23 @@ function Book(title, author, pages, isRead){
     };
 }
 
+function addBookToLibrary(event) {
+    event.preventDefault();
+
+    const title = document.getElementById('title').value;
+    const author = document.getElementById('author').value;
+    const pages = parseInt(document.getElementById('pages').value);
+    const isRead = document.getElementById('isRead').checked;
+
+    const newBook = new Book(title, author, pages, isRead);
+    myLibrary.push(newBook);
+
+    displayLibrary();
+    clearForm();
+    toggleFormVisibility();
+}
+
+
 function displayLibrary(){
     const libraryDiv = document.getElementById("library");
     libraryDiv.innerHTML = '';
@@ -49,9 +66,15 @@ function displayLibrary(){
     });
 }
 
+function clearForm() {
+    document.getElementById('bookForm').reset();
+}
 
-myLibrary.push(new Book("The Hobbit", "J.R.R Tolien", 295, false));
-myLibrary.push(new Book("1984", "George Orwell", 328, false));
-myLibrary.push(new Book("Die Verwandlung", "Franz Kafka", 201, true));
+function toggleFormVisibility() {
+    const form = document.getElementById('bookForm');
+    form.style.display = form.style.display === 'none' ? 'flex' : 'none';
+}
 
-window.onload = displayLibrary;
+
+document.getElementById('toggleFormButton').addEventListener('click', toggleFormVisibility);
+document.getElementById('bookForm').addEventListener('submit', addBookToLibrary);

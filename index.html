@@ -4,10 +4,22 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./style.css">
-    <title>Document</title>
+    <title>Library</title>
 </head>
 <body>
     <h1>Library</h1>
+
+    <button id="toggleFormButton">Add Book</button>
+
+    <form id="bookForm" style="display: none;">
+        <input type="text" id="title" placeholder="Title" required>
+        <input type="text" id="author" placeholder="Author" required>
+        <input type="number" id="pages" placeholder="Pages" required>
+        <label>
+            <input type="checkbox" id="isRead"> Read
+        </label>
+        <button type="submit">Add Book</button>
+    </form>
     <div id="library"></div>
     <script src="./library.js"></script>
 </body>
