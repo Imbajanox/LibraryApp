@@ -16,19 +16,36 @@
     <link rel="manifest" href="./icon/site.webmanifest">
 </head>
 <body>
-    <h1>Library</h1>
+    
+    <div class="header"> 
+        <div>
+            <button id="toggleFormButton">Add Book</button>
 
-    <button id="toggleFormButton">Add Book</button>
-
-    <form id="bookForm" style="display: none;">
-        <input type="text" id="title" placeholder="Title" required>
-        <input type="text" id="author" placeholder="Author" required>
-        <input type="number" id="pages" placeholder="Pages" required>
-        <label>
-            <input type="checkbox" id="isRead"> Read
-        </label>
-        <button type="submit">Add Book</button>
-    </form>
+            <form id="bookForm" style="display: none;">
+                <input type="text" id="title" placeholder="Title" required>
+                <input type="text" id="author" placeholder="Author" required>
+                <input type="number" id="pages" placeholder="Pages" required>
+                <label>
+                    <input type="checkbox" id="isRead"> Read
+                </label>
+                <button type="submit">Add Book</button>
+            </form>
+        </div>
+        <div>
+            <h1>Library</h1>
+        </div>
+        <div>
+            <h2>Stats</h2>
+            <hr>
+            <p>100 Books owned</p>
+            <p>67 Books read (67 %)</p>
+            <p>3.14 Average rating</p>
+            <hr>
+        </div>
+        
+    </div>
+    
+    
     <div id="library"></div>
     <script src="./library.js"></script>
 </body>
