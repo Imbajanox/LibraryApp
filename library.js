@@ -1,10 +1,11 @@
 const myLibrary = [];
 
-function Book(title, author, pages, isRead){
+function Book(title, author, pages, isRead, rating = 0){
     this.title = title;
     this.author = author;
     this.pages = pages;
     this.isRead = isRead;
+    this.rating = rating;
 
     this.info = function() {
         if(this.isRead){
@@ -15,6 +16,14 @@ function Book(title, author, pages, isRead){
         }
     };
 }
+
+Book.prototype.changeReadStatus = function() {
+    this.isRead = !this.isRead;
+    if(!this.isRead){
+        this.rating = 0;
+    }
+    displayLibrary();
+};
 
 function addBookToLibrary(event) {
     event.preventDefault();
@@ -69,8 +78,7 @@ function displayLibrary(){
         toggleReadButton.innerHTML = book.isRead ? '<span class="iconify" data-icon="mdi-bookmark-remove-outline"></span>Mark as unread' : '<span class="iconify" data-icon="mdi-bookmark-check-outline"></span>Mark as read';
         toggleReadButton.classList.add('toggle-read-button');
         toggleReadButton.addEventListener('click', () => {
-            book.isRead = !book.isRead;
-            displayLibrary();
+            book.changeReadStatus();
         });
         buttonDiv.appendChild(toggleReadButton);
 
@@ -83,8 +91,42 @@ function displayLibrary(){
         });
         buttonDiv.appendChild(removeButton);
 
+        if(book.isRead){
+            const starRatingDiv = document.createElement('div');
+            starRatingDiv.classList.add('star-rating');
+
+            for (let i = 1; i <= 5; i++) {
+                const starDiv = document.createElement('div');
+                const star = document.createElement('span');
+                star.classList.add('iconify');
+                star.setAttribute('data-icon','mdi-star')
+                star.classList.add('star');
+                if(i <= book.rating){
+                    star.classList.add('selected');
+                }
+                starDiv.addEventListener('click', () => {
+                    book.rating = i;
+                    updateStarRating(starRatingDiv, book.rating);
+                });
+                starDiv.appendChild(star);
+                starRatingDiv.appendChild(starDiv);
+            }
+            card.appendChild(starRatingDiv);
+        }
 
         libraryDiv.appendChild(card);
+    });
+}
+
+function updateStarRating(starRatingDiv, rating) {
+    const stars = starRatingDiv.querySelectorAll('.star');
+    stars.forEach((star, index) => {
+        if(index < rating) {
+            star.classList.add('selected');
+        } else {
+            star.classList.remove('selected');
+        }
+
     });
 }
 
