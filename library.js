@@ -42,8 +42,18 @@ function addBookToLibrary(event) {
 }
 
 function displayHeader(){
+    
+    
+
     const statsDiv = document.getElementById("stats");
     statsDiv.innerHTML = '';
+
+    const statsTitle = document.createElement("h2");
+    statsTitle.textContent = 'Stats'
+    statsDiv.appendChild(statsTitle);
+    
+    statsDiv.appendChild(document.createElement('hr'));
+    
     const booksOwned = document.createElement("p");
     booksOwned.textContent = (`${myLibrary.length} Books owned`);
     statsDiv.appendChild(booksOwned);
@@ -53,6 +63,8 @@ function displayHeader(){
     const booksReadP = document.createElement("p");
     booksReadP.textContent = (`${booksRead.length} Books read (${(( 100* booksRead.length ) / myLibrary.length).toFixed(2)} %)`);
     statsDiv.appendChild(booksReadP);
+
+    statsDiv.appendChild(document.createElement('hr'));
 
 }
 

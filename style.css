@@ -20,6 +20,7 @@ body{
 h1 {
     text-align: center;
     margin-bottom: 20px;
+    margin-top: 20px;
     font-size: 54pt;
     text-shadow: 2px 2px 3px;
 }
@@ -176,4 +177,14 @@ form button:hover{
 hr {
     margin-left: 20px;
     margin-right: 20px;
+}
+
+.addBook {
+    display: flex;
+    flex-direction: column;
+
+}
+
+#toggleFormButton {
+    margin: auto;
 }
