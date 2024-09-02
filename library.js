@@ -41,6 +41,20 @@ function addBookToLibrary(event) {
     toggleFormVisibility();
 }
 
+function displayHeader(){
+    const statsDiv = document.getElementById("stats");
+    statsDiv.innerHTML = '';
+    const booksOwned = document.createElement("p");
+    booksOwned.textContent = (`${myLibrary.length} Books owned`);
+    statsDiv.appendChild(booksOwned);
+
+    const booksRead = myLibrary.filter(p => p.isRead === true);
+
+    const booksReadP = document.createElement("p");
+    booksReadP.textContent = (`${booksRead.length} Books read (${(( 100* booksRead.length ) / myLibrary.length).toFixed(2)} %)`);
+    statsDiv.appendChild(booksReadP);
+
+}
 
 function displayLibrary(){
     const libraryDiv = document.getElementById("library");
@@ -116,6 +130,7 @@ function displayLibrary(){
 
         libraryDiv.appendChild(card);
     });
+    displayHeader();
 }
 
 function updateStarRating(starRatingDiv, rating) {
@@ -148,4 +163,5 @@ myLibrary.push(new Book("Der Hobbit", "J.R.R. Tolkien", 310, true));
 myLibrary.push(new Book("1984", "George Orwell", 328, false));
 myLibrary.push(new Book("Die Verwandlung", "Franz Kafka", 201, true));
 
+displayHeader();
 displayLibrary();
