@@ -101,6 +101,9 @@ form button:hover{
     border-radius: 5px;
     cursor: pointer;
     margin-bottom: 20px;
+    margin-top: 20px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 #toggleFormButton:hover {
@@ -185,6 +188,3 @@ hr {
 
 }
 
-#toggleFormButton {
-    margin: auto;
-}
