@@ -64,6 +64,10 @@ function displayHeader(){
     booksReadP.textContent = (`${booksRead.length} Books read (${(( 100* booksRead.length ) / myLibrary.length).toFixed(2)} %)`);
     statsDiv.appendChild(booksReadP);
 
+    const avgRating = document.createElement("p");
+    avgRating.textContent = `Average Rating: ${ calculateAverageRating().toFixed(2) }`;
+    statsDiv.appendChild(avgRating);
+
     statsDiv.appendChild(document.createElement('hr'));
 
 }
@@ -145,6 +149,25 @@ function displayLibrary(){
     displayHeader();
 }
 
+function calculateAverageRating() {
+    let totalRatingValue = 0;
+    let bookNumber = 0;
+    myLibrary.forEach(book => {
+        if (book.isRead === true && book.rating != 0)
+        {
+            totalRatingValue += book.rating;
+            bookNumber++;
+        }
+        
+    });
+    if(bookNumber != 0) {
+        return totalRatingValue / bookNumber
+    } else {
+        return 0;
+    }
+    
+}
+
 function updateStarRating(starRatingDiv, rating) {
     const stars = starRatingDiv.querySelectorAll('.star');
     stars.forEach((star, index) => {
@@ -153,7 +176,7 @@ function updateStarRating(starRatingDiv, rating) {
         } else {
             star.classList.remove('selected');
         }
-
+        displayHeader();
     });
 }
 
