@@ -7,4 +7,4 @@ View the App [here](https://imbajanox.github.io/LibraryApp/)
 
 ## Preview
 
-![Preview](LibraryApp.png)
+![Preview](images/LibraryApp.png)
